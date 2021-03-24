@@ -1,18 +1,13 @@
 # Hospital-Information-Management-System-Design-Project
 Designed the hospital information management system for doctors to take care of COVID-19 patients.
 
-1. Description of database table structure
-In this PJ, our team's idea is to create table structures for 8 entity sets (four different identities, patients, locations, daily information and nucleic acid test sheets) respectively. In addition, no related entity set has a table structure. The specific table structure is as follows:
-Attending doctor, head nurse_ Nurse, ward_ Nurse and emergency_ The table structure is similar, and its primary keys are d_ id, hn_ id, wn_ id, en_ ID, name, contact_ Info, password attribute, where the primary key is the login user name by default and password is the login password
-The primary key of patient table is p_ The other attributes are name and contact_ Info, age, severity, life_ State, EN_ Because of the many to one relationship between the patient and the emergency nurse, En will be used_ The ID is placed in the patient entity set as a foreign key
-Location entity set is the core of our PJ, and the primary key is (area, room)_ no, bed_ The area represents the area information (0: isolation area, 1: mild disease, 2: severe disease, 3: critical disease), and the remaining two represent the room number and bed number of the area respectively, so the three can act as the primary key to determine the only location at the same time, because the attending doctor, head nurse and ward nurse all have a one-to-many relationship with them, while the patient and location have a one-to-one relationship, so LOC Each of the four entity sets has its ID as foreign Key, note that when a bed has no patients, the information of the attending doctor and head nurse of the location still exists, because they are in charge of all the locations of the corresponding area of the bed (by determining a location, the four groups of people responsible for the location can be determined, but when the location has no patients, the ID of the patient and ward nurse is null)
-Daily_ The info table contains the daily information of the ward nurses to the patients, and its primary key is info_ ID, and the rest_ Date, temperature, symptom, result, life_ State, and has P_ ID and WN_ ID as foreign key
-The last table structure is covid_ Test, the primary key is t_ ID, and the_ Date, result, severity and P_ ID and D_ The ID is foreign key
-
-2. Operation and other instructions
 Python is the language we use
+
 Please run MySQL - U root - P in terminal first< init.sql
+
 And then python DB.py Run (please change first) DB.py Connect port password in the program)
+
 Different user identities can be selected to login in the login interface. For example, 165690143690109823 is the user name of the attending doctor in the mild, severe and critical areas, and the initial password of all users is 000000
+
 We mainly use the default primary indexing, Because each ID is unique and the amount of data is low, it can also be queried quickly through the primary key index. At the same time, all our automatic operations (for example, when the doctor changes the patient's status to rehabilitation, discharge or death in the original full area, there will be an isolation area or other areas automatically, and the qualified patients will be transferred to the previous patient's location and matched with the corresponding nurses For example, when considering new patients, we will consider whether there are spare beds and nurses. They are all written in Python statements in the program, and there is no trigger operation involved.
 
