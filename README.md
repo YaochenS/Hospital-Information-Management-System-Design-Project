@@ -1,7 +1,7 @@
 # Hospital-Information-Management-System-Design-Project
 Designed the hospital information management system for doctors to take care of COVID-19 patients.
 
-Teammate: Yijia Wang (@burushuijiaoba)
+##### Author：Yaochen Shen，Yijia Wang(@burushuijiaoba)
 
 Python is the language we use
 
